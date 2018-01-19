@@ -31,9 +31,10 @@
         tools:layout_editor_absoluteY="99dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonShowCalc"
         android:layout_width="303dp"
         android:layout_height="56dp"
+        android:onClick="showCalc"
         android:text="Задание №1"
         tools:layout_editor_absoluteX="41dp"
         tools:layout_editor_absoluteY="36dp" />

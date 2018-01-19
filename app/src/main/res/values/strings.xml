@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">cp481</string>
+    <string name="title_activity_calc">Калькулятор</string>
 </resources>
