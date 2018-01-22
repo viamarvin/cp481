@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.lang.Math;
 
 public class CalcActivity extends AppCompatActivity {
     TextView resultField;
@@ -94,6 +95,12 @@ public class CalcActivity extends AppCompatActivity {
                     break;
                 case "+":
                     operand = operand + number;
+                    break;
+                case "mod":
+                    operand = operand % number;
+                    break;
+                case "div":
+                    operand = (Double) Math.round(operand / number);
                     break;
             }
         }
