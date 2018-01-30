@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SeekBarPreference
+        android:key="fontSize"
+        android:title="@string/speed"
+        android:summary="@string/speed_summary"
+        android:max="30"
+        android:defaultValue="4" />
+
+    <com.rarepebble.colorpicker.ColorPreference
+        android:key="colorObject"
+        android:title="@string/color_object"
+        android:defaultValue="#f00"
+        />
+
+    <com.rarepebble.colorpicker.ColorPreference
+        android:key="colorBackground"
+        android:title="@string/color_background"
+        android:defaultValue="#f00"
+        />
+</PreferenceScreen>

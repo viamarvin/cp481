@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">cp481</string>
     <string name="title_activity_calc">Калькулятор</string>
+    <string name="speed">Ускорение</string>
+    <string name="speed_summary">Выберите ускорение для объекта</string>
+    <string name="color_object">Цвет объекта</string>
+    <string name="color_background">Цвет фона</string>
 </resources>
