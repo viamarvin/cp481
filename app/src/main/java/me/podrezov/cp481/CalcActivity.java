@@ -10,6 +10,7 @@ import java.lang.Math;
 
 public class CalcActivity extends AppCompatActivity {
     TextView resultField;
+    TextView operandField;
     EditText numberField;
     Double operand = null;
     String lastOperation = "=";
@@ -20,7 +21,8 @@ public class CalcActivity extends AppCompatActivity {
         setContentView(R.layout.calc);
 
         resultField = (TextView) findViewById(R.id.resultField);
-        numberField = (EditText) findViewById(R.id.editText);
+        operandField = (TextView) findViewById(R.id.operandField);
+        numberField = (EditText) findViewById(R.id.numberField);
     }
 
     @Override
@@ -68,7 +70,16 @@ public class CalcActivity extends AppCompatActivity {
         lastOperation = op;
     }
 
+    public void onClearClick(View view) {
+        operand = null;
+
+        resultField.setText("");
+        numberField.setText("");
+        operandField.setText("");
+    }
+
     private void performOperation(Double number, String operation) {
+        Long intNumber = null;
         if (operand == null) {
             operand = number;
         } else {
@@ -100,12 +111,14 @@ public class CalcActivity extends AppCompatActivity {
                     operand = operand % number;
                     break;
                 case "div":
-                    operand = (Double) Math.round(operand / number);
+                    intNumber =  Math.round(operand / number);
+                    operand = intNumber.doubleValue();
                     break;
             }
         }
 
         resultField.setText(operand.toString().replace('.', ','));
         numberField.setText("");
+        operandField.setText(lastOperation);
     }
 }
