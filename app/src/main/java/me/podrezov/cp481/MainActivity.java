@@ -17,4 +17,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intObj = new Intent(this, CalcActivity.class);
         startActivity(intObj);
     }
+
+    public void showSettingPage(View v)
+    {
+        Intent intObj = new Intent(this, MyPreferenceActivity.class);
+        startActivity(intObj);
+    }
 }

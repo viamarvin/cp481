@@ -6,4 +6,10 @@
     <string name="speed_summary">Выберите ускорение для объекта</string>
     <string name="color_object">Цвет объекта</string>
     <string name="color_background">Цвет фона</string>
+    <string name="settings_title">Настройки</string>
+    <string name="task1">Задание №1</string>
+    <string name="task2">Задание №2</string>
+    <string name="task3">Задание №3</string>
+    <color name="white_color">#000</color>
+    <color name="gray_color">#aaa</color>
 </resources>

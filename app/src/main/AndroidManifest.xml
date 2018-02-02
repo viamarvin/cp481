@@ -20,6 +20,10 @@
             android:name=".CalcActivity"
             android:label="@string/title_activity_calc" >
         </activity>
+        <activity
+            android:name=".MyPreferenceActivity"
+            android:label="@string/settings_title">
+        </activity>
     </application>
 
 </manifest>
