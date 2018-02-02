@@ -10,10 +10,11 @@ import java.lang.Math;
 
 public class CalcActivity extends AppCompatActivity {
     TextView resultField;
-    TextView operandField;
-    EditText numberField;
     Double operand = null;
+    String numberField = "";
+    String fullNumber = "";
     String lastOperation = "=";
+    Boolean divisionByZero = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,7 @@ public class CalcActivity extends AppCompatActivity {
         setContentView(R.layout.calc);
 
         resultField = (TextView) findViewById(R.id.resultField);
-        operandField = (TextView) findViewById(R.id.operandField);
-        numberField = (EditText) findViewById(R.id.numberField);
+        resultField.setText("");
     }
 
     @Override
@@ -46,8 +46,15 @@ public class CalcActivity extends AppCompatActivity {
 
     public void onNumberClick(View view) {
         Button button = (Button) view;
-        numberField.append(button.getText());
+        numberField = button.getText().toString();
+        fullNumber = fullNumber.toString() + numberField.toString();
 
+        if (divisionByZero) {
+            resultField.setText("");
+            divisionByZero = false;
+        }
+
+        resultField.append(numberField);
         if (lastOperation.equals("=") && operand != null) {
             operand = null;
         }
@@ -56,30 +63,66 @@ public class CalcActivity extends AppCompatActivity {
     public void onOperationClick(View view) {
         Button button = (Button) view;
         String op = button.getText().toString();
-        String number = numberField.getText().toString();
+        String test = null;
+        Integer index;
 
-        if (number.length() > 0) {
-            number = number.replace(',', '.');
-            try {
-                performOperation(Double.valueOf(number), op);
-            } catch (NumberFormatException ex) {
-                numberField.setText("");
-            }
+        if (divisionByZero) {
+            resultField.setText("");
+            divisionByZero = false;
         }
 
-        lastOperation = op;
+        test = resultField.getText().toString();
+        if (test.length() > 0) {
+            if (fullNumber.equals("0") && lastOperation.equals("/")) {
+                onClearClick(view);
+                resultField.setText(R.string.division_by_zero);
+                divisionByZero = true;
+
+                lastOperation = "=";
+            } else {
+                if (fullNumber.equals("") && !lastOperation.equals("=")) {
+                    index = test.lastIndexOf(lastOperation);
+                    if (index != -1) {
+                        test = test.substring(0, index - 1);
+                        test = test + ' ' + op + ' ';
+                    }
+
+                    resultField.setText(test);
+                } else {
+                    if (!op.equals("=")) {
+                        resultField.append(' ' + op + ' ');
+                    }
+                }
+
+                if (fullNumber.length() > 0) {
+                    fullNumber = fullNumber.replace(',', '.');
+                    try {
+                        performOperation(Double.valueOf(fullNumber), op);
+                    } catch (NumberFormatException ex) {
+                        numberField = "";
+                        fullNumber = "";
+                    }
+                }
+
+                lastOperation = op;
+            }
+        }
     }
 
     public void onClearClick(View view) {
         operand = null;
 
         resultField.setText("");
-        numberField.setText("");
-        operandField.setText("");
+        numberField = "";
+        divisionByZero = false;
+        fullNumber = "";
     }
 
     private void performOperation(Double number, String operation) {
-        Long intNumber = null;
+        Double mod = null;
+        Integer div = null;
+        String str = null;
+
         if (operand == null) {
             operand = number;
         } else {
@@ -108,17 +151,25 @@ public class CalcActivity extends AppCompatActivity {
                     operand = operand + number;
                     break;
                 case "mod":
-                    operand = operand % number;
-                    break;
-                case "div":
-                    intNumber =  Math.round(operand / number);
-                    operand = intNumber.doubleValue();
+                    mod = operand % number;
+                    div = (int) (operand / number);
+
+                    operand = div.doubleValue();
                     break;
             }
         }
 
-        resultField.setText(operand.toString().replace('.', ','));
-        numberField.setText("");
-        operandField.setText(lastOperation);
+        if (operation.equals("=")) {
+            if (lastOperation.equals("mod")) {
+                str = operand.toString() + " (" + String.format("%.1f", mod) + ")";
+            } else {
+                str = operand.toString();
+            }
+
+            resultField.setText(str.replace('.', ','));
+        }
+
+        fullNumber = "";
+        numberField = "";
     }
 }
