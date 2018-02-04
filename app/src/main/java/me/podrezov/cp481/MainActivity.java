@@ -29,4 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intObj = new Intent(this, TriangleActivity.class);
         startActivity(intObj);
     }
+
+    public void showSnowman(View v)
+    {
+        Intent intObj = new Intent(this, SnowmanActivity.class);
+        startActivity(intObj);
+    }
 }

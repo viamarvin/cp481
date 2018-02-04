@@ -28,6 +28,10 @@
             android:name=".TriangleActivity"
             android:label="@string/game">
         </activity>
+        <activity
+            android:name=".SnowmanActivity"
+            android:label="@string/snowman">
+        </activity>
     </application>
 
 </manifest>
