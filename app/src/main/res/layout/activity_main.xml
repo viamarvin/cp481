@@ -31,7 +31,8 @@
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/task2" />
+            android:text="@string/task3"
+            android:onClick="showGamePage" />
     </LinearLayout>
 
     <LinearLayout

@@ -23,4 +23,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intObj = new Intent(this, MyPreferenceActivity.class);
         startActivity(intObj);
     }
+
+    public void showGamePage(View v)
+    {
+        Intent intObj = new Intent(this, TriangleActivity.class);
+        startActivity(intObj);
+    }
 }

@@ -10,6 +10,8 @@
     <string name="task1">Задание №1</string>
     <string name="task2">Задание №2</string>
     <string name="task3">Задание №3</string>
+    <string name="sound_file_not_found">Звуковой файл не найден</string>
+    <string name="game">Игра в триугольники</string>
     <color name="white_color">#000</color>
     <color name="gray_color">#aaa</color>
 </resources>

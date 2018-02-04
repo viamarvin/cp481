@@ -24,6 +24,10 @@
             android:name=".MyPreferenceActivity"
             android:label="@string/settings_title">
         </activity>
+        <activity
+            android:name=".TriangleActivity"
+            android:label="@string/game">
+        </activity>
     </application>
 
 </manifest>
