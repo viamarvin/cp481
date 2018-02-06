@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#fffeb3">
+    android:background="#000">
 
     <me.podrezov.cp481.Snowman
         android:id="@+id/image"

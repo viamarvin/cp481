@@ -12,18 +12,14 @@ import android.view.View;
 public class Snowman extends View
 {
     GradientDrawable[] snow;
-    Path nos;
+    Path carrot, bucket;
     int x,y,dW,dH;
 
     public Snowman(Context v, AttributeSet as)
     {
         super(v, as);
-        snow=new GradientDrawable[3];
-        drawSnowman(as);
-    }
+        snow = new GradientDrawable[3];
 
-    public void drawSnowman(AttributeSet ast)
-    {
         dW = getResources().getDisplayMetrics().widthPixels;
         dH = getResources().getDisplayMetrics().heightPixels;
         x = 7*dW/18;
@@ -35,46 +31,55 @@ public class Snowman extends View
             snow[i].setColor(Color.parseColor("#ffffff"));
             snow[i].setStroke(2, Color.parseColor("#bae1ff"));
         }
+
         snow[0].setBounds(41*x/60, 3*y/20+y/10,x*33/20, y/2+y/10);
         snow[1].setBounds(x*13/24-x/10, y/2, 43*x/24+x/10, y);
         snow[2].setBounds(x/5, 4*y/5, 2*x+x/5, 3*y/2);
-        nos = new Path();
-        nos.moveTo(x+x/7, y/3+y/16);
-        nos.lineTo(x-2*x/7,  y/2-y/16+y/16);
-        nos.lineTo(x+x/7,  y/3+y/25+y/16);
-        nos.close();
     }
 
     protected void onDraw(Canvas canvas)
     {
         Paint pp1 = new Paint();
         Paint pp2 = new Paint();
+
         pp1.setColor(Color.parseColor("#4a3b34"));
         pp2.setColor(Color.RED);
         pp1.setStrokeWidth(8);
         pp2.setStrokeWidth(5);
-        canvas.drawLine(0,y-y/2,x,y, pp1);
-        canvas.drawLine(x,y+y/3,2*x+x/4,y-y/2, pp1);
+
         pp1.setColor(Color.BLACK);
         pp1.setColor(Color.parseColor("#66391c"));
         pp1.setStrokeWidth(15);
         pp1.setStrokeWidth(10);
         pp1.setColor(Color.BLACK);
+
+        // Тело
         snow[2].draw(canvas);
         snow[1].draw(canvas);
         snow[0].draw(canvas);
-        canvas.drawPath(nos, pp2);
-        canvas.drawCircle(x+x/6, y-y/3, x/10, pp1);
-        canvas.drawCircle(x+x/6, y-y/3+y/10, x/10, pp1);
-        canvas.drawCircle(x+x/6, y-y/3+y/5, x/10, pp1);
-        canvas.drawCircle(x, y/3, x/13, pp1);
-        canvas.drawCircle(x+x/3, y/3, x/13, pp1);
-        pp1.setStrokeWidth(3);
-        canvas.drawLine(x+x/15,y/2+y/25,x+x/4+x/15,y/2-y/25+y/25, pp1);
+
+        // Нос
+        carrot = new Path();
+        carrot.moveTo(x + x / 8 + 10, y / 3 + y / 18);
+        carrot.lineTo(x + x / 16,  y / 2 + y / 16);
+        carrot.lineTo(x + x / 4,  y / 2 + y / 16);
+        carrot.close();
+        canvas.drawPath(carrot, pp2);
+
+        // Глаза
+        canvas.drawCircle(x, y / 3, x / 13, pp1);
+        canvas.drawCircle(x + x / 3, y / 3, x / 13, pp1);
+
+        // Ведро
         pp1.setColor(Color.WHITE);
-        canvas.drawRect(x-x/10,y/3+3,x+x/8,y/3+y/25+3,pp1);
-        canvas.drawRect(x-x/10+x/5,y/3+3,x+x/8+x/3,y/3+y/25+3,pp1);
-        pp1.setColor(Color.WHITE);
+        bucket = new Path();
+        bucket.moveTo(x + x / 7, y / 3 + y / 18);
+        bucket.lineTo(x + x / 16,  y / 2 + y / 16);
+        bucket.lineTo(x + x / 4, y / 3 + y / 18);
+        bucket.lineTo(x + x / 16,  y / 2 + y / 16);
+        bucket.close();
+        canvas.drawPath(bucket, pp1);
+
         invalidate();
     }
 }
