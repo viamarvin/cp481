@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".CalcActivity"
-            android:label="@string/title_activity_calc" >
+            android:label="@string/title_activity_calc">
         </activity>
         <activity
             android:name=".MyPreferenceActivity"
@@ -26,11 +26,13 @@
         </activity>
         <activity
             android:name=".TriangleActivity"
-            android:label="@string/game">
+            android:label="@string/game"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".SnowmanActivity"
-            android:label="@string/snowman">
+            android:label="@string/snowman"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
