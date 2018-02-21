@@ -60,9 +60,10 @@ public class Snowman extends View
 
         // Нос
         carrot = new Path();
-        carrot.moveTo(x + x / 8 + 10, y / 3 + y / 18);
-        carrot.lineTo(x + x / 16,  y / 2 + y / 16);
-        carrot.lineTo(x + x / 4,  y / 2 + y / 16);
+        carrot.moveTo(x + x / 16 + 30, y / 2 + y / 18);
+        carrot.lineTo(x + x / 16,  y / 3 + y / 16);
+        carrot.lineTo(x + x / 4,  y / 3 + y / 16);
+
         carrot.close();
         canvas.drawPath(carrot, pp2);
 
