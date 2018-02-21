@@ -12,7 +12,7 @@ import android.view.View;
 public class Snowman extends View
 {
     GradientDrawable[] snow;
-    Path carrot, bucket;
+    Path carrot;
     int x,y,dW,dH;
 
     public Snowman(Context v, AttributeSet as)
@@ -22,8 +22,8 @@ public class Snowman extends View
 
         dW = getResources().getDisplayMetrics().widthPixels;
         dH = getResources().getDisplayMetrics().heightPixels;
-        x = 7*dW/18;
-        y = 5*dH/8;
+        x = 7 * dW / 18;
+        y = 5 * dH / 8 - 30;
 
         for (int i=0;i<3;i++){
             snow[i]=new GradientDrawable();
@@ -43,7 +43,7 @@ public class Snowman extends View
         Paint pp2 = new Paint();
 
         pp1.setColor(Color.parseColor("#4a3b34"));
-        pp2.setColor(Color.RED);
+        pp2.setColor(Color.parseColor("#ffa500"));
         pp1.setStrokeWidth(8);
         pp2.setStrokeWidth(5);
 
@@ -70,16 +70,6 @@ public class Snowman extends View
         // Глаза
         canvas.drawCircle(x, y / 3, x / 13, pp1);
         canvas.drawCircle(x + x / 3, y / 3, x / 13, pp1);
-
-        // Ведро
-        pp1.setColor(Color.WHITE);
-        bucket = new Path();
-        bucket.moveTo(x + x / 7, y / 3 + y / 18);
-        bucket.lineTo(x + x / 16,  y / 2 + y / 16);
-        bucket.lineTo(x + x / 4, y / 3 + y / 18);
-        bucket.lineTo(x + x / 16,  y / 2 + y / 16);
-        bucket.close();
-        canvas.drawPath(bucket, pp1);
 
         invalidate();
     }
